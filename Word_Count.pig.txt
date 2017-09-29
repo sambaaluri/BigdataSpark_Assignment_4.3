@@ -1,4 +1,4 @@
-A = LOAD 'HADOOP/wordcount.csv' USING PigSTorage(',') as (lines:chararray);
+A = LOAD 'HADOOP/wordcount.csv' USING PigSTorage(' ') as (lines:chararray);
 B = foreach A generate flatten(TOKENIZE((chararray)$0)) as word;
 C = group B by word;
 D = foreach C generate COUNT(B), group;
